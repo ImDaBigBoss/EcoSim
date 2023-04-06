@@ -1,14 +1,10 @@
 package com.connexal.ecosim.mobs;
 
 import com.connexal.ecosim.EcoSim;
-import com.connexal.ecosim.utils.MobSex;
 import com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent;
-import net.kyori.adventure.text.Component;
-import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
-import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Breedable;
 import org.bukkit.entity.Mob;
 import org.bukkit.event.EventHandler;

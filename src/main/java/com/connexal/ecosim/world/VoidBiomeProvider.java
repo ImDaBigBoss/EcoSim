@@ -1,4 +1,4 @@
-package com.connexal.ecosim.utils;
+package com.connexal.ecosim.world;
 
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeProvider;

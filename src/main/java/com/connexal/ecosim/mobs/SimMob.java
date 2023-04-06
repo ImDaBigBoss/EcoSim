@@ -10,7 +10,9 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Mob;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -33,6 +35,7 @@ public class SimMob {
     private double speed;
     private double gestationTime;
     private double senseRadius;
+
     private double staminaUsageMultiplier;
     private double growthRate;
 
@@ -44,7 +47,7 @@ public class SimMob {
     private long lastMateTime = 0;
 
     private Map<SimMob, Location> surroundingMobs = new HashMap<>();
-    private Map<Block, Location> surroundingBlocks = new HashMap<>();
+    private List<Block> surroundingBlocks = new ArrayList<>();
 
     public SimMob(SimMobType type, Mob entity) {
         this.type = type;
@@ -161,8 +164,8 @@ public class SimMob {
         return new HashMap<>(this.surroundingMobs);
     }
 
-    public Map<Block, Location> getSurroundingBlocks() {
-        return new HashMap<>(this.surroundingBlocks);
+    public List<Block> getSurroundingBlocks() {
+        return new ArrayList<>(this.surroundingBlocks);
     }
 
     public Location getLocation() {

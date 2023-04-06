@@ -1,5 +1,6 @@
 package com.connexal.ecosim.command;
 
+import com.connexal.ecosim.EcoSim;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -16,7 +17,9 @@ public class TpCentreCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        player.teleport(new Location(player.getWorld(), 128, 75, 128));
+
+        int side = EcoSim.SIMULATION_WIDTH / 2;
+        player.teleport(new Location(player.getWorld(), side + 0.5, EcoSim.HEIGHT_MAP[side][side], side + 0.5));
 
         return true;
     }
