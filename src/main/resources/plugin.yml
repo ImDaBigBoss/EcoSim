@@ -1,0 +1,24 @@
+name: EcoSim
+load: STARTUP
+version: '${project.version}'
+main: com.connexal.ecosim.EcoSim
+api-version: 1.19
+authors: [ImDaBigBoss, CarlitoChicken]
+
+commands:
+  geteggs:
+    permission: ecosim.op
+    aliases:
+      - eggs
+
+  tpcentre:
+    permission: ecosim.op
+    aliases:
+      - tpcenter
+
+  mobinfo:
+    permission: ecosim.op
+
+permissions:
+  ecosim.op:
+    default: op
