@@ -18,6 +18,7 @@ public class SimMobs implements Listener {
     private static final Particle.DustOptions FAILED_DUST = new Particle.DustOptions(Color.fromRGB(255, 0, 0), 2);
 
     private static boolean initialised = false;
+    private static int taskID = -1;
     private static final EcoSim plugin = EcoSim.getInstance();
 
     public static final Map<SimMobType, List<SimMobType>> predators = new HashMap<>();
@@ -42,12 +43,7 @@ public class SimMobs implements Listener {
             }
         }
 
-        plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
-            List<SimMob> tmp = new ArrayList<>(spawnedMobs.values());
-            for (SimMob mob : tmp) {
-                mob.tick();
-            }
-        }, 0, 20L / EcoSim.TICKS_PER_SECOND); //Twice a second
+        updateTPS();
     }
 
     public static void stop() {
@@ -60,6 +56,19 @@ public class SimMobs implements Listener {
         for (SimMob mob : spawnedMobs.values()) {
             mob.kill();
         }
+    }
+
+    public static void updateTPS() {
+        if (taskID != -1) {
+            plugin.getServer().getScheduler().cancelTask(taskID);
+        }
+
+        taskID = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
+            List<SimMob> tmp = new ArrayList<>(spawnedMobs.values());
+            for (SimMob mob : tmp) {
+                mob.tick();
+            }
+        }, 0, 20L / EcoSim.ticksPerSecond);
     }
 
     public static SimMob spawnChildMob(SimMob male, SimMob female) {

@@ -37,7 +37,7 @@ public class MobInfoCommand implements CommandExecutor {
                 ChatColor.WHITE + "  Type: " + ChatColor.GREEN + mob.getType().name() + "\n" +
                 ChatColor.WHITE + "  Gender: " + ChatColor.GREEN + (mob.getSex() == MobSex.FEMALE ? "Female" : "Male") + "\n" +
                 ChatColor.WHITE + "  Is gestating: " + ChatColor.GREEN + (mob.isGestating() ? "YES" : "NO") + "\n" +
-                ChatColor.WHITE + "  Is blocked: " + ChatColor.GREEN + (mob.isBlocked() ? "YES" : "NO") + "\n" +
+                ChatColor.WHITE + "  Sense radius: " + ChatColor.GREEN + mob.getSenseRadius() + "\n" +
                 ChatColor.WHITE + "  Age: " + ChatColor.GREEN + mob.getAge() + "\n" +
                 ChatColor.WHITE + "  Can mate: " + ChatColor.GREEN + (mob.canMate() ? "YES" : "NO") + "\n" +
                 ChatColor.WHITE + "  Hunger: " + ChatColor.GREEN + mob.getHunger() + "\n" +

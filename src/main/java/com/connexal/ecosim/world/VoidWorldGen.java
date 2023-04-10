@@ -19,8 +19,8 @@ public class VoidWorldGen extends ChunkGenerator {
     private SimplexOctaveGenerator generator = null;
 
     public VoidWorldGen() {
+        this.blockPopulators.add(new PoolPopulator()); //Must be first
         this.blockPopulators.add(new TreePopulator());
-        this.blockPopulators.add(new PoolPopulator());
     }
 
     public static boolean validChunkCoords(int chunkX, int chunkZ, boolean allowEdge) {

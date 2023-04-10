@@ -4,11 +4,9 @@ import com.connexal.ecosim.EcoSim;
 import com.connexal.ecosim.mobs.SimGoal;
 import com.connexal.ecosim.mobs.SimMob;
 import com.connexal.ecosim.mobs.SimMobs;
-import net.kyori.adventure.util.TriState;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 
-import java.util.List;
 import java.util.Map;
 
 public class MultiplyGoal extends SimGoal {
@@ -75,8 +73,8 @@ public class MultiplyGoal extends SimGoal {
 
                     this.femaleMate.setGestate(false);
                     this.mob.setGestate(false);
-                }, (long) ((20L / EcoSim.TICKS_PER_SECOND) * this.femaleMate.getGestationTime()));
-            }, (20L / EcoSim.TICKS_PER_SECOND) * TIME_OF_ACT);
+                }, (long) ((20L / EcoSim.ticksPerSecond) * this.femaleMate.getGestationTime()));
+            }, (20L / EcoSim.ticksPerSecond) * TIME_OF_ACT);
         } else {
             this.mob.move(this.femaleMate.getLocation());
         }

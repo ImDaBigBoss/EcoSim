@@ -19,6 +19,9 @@ commands:
   mobinfo:
     permission: ecosim.op
 
+  settps:
+    permission: ecosim.op
+
 permissions:
   ecosim.op:
     default: op

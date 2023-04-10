@@ -2,6 +2,7 @@ package com.connexal.ecosim;
 
 import com.connexal.ecosim.command.GetEggsCommand;
 import com.connexal.ecosim.command.MobInfoCommand;
+import com.connexal.ecosim.command.SetTpsCommand;
 import com.connexal.ecosim.command.TpCentreCommand;
 import com.connexal.ecosim.mobs.SimMobs;
 import com.connexal.ecosim.world.VoidWorldGen;
@@ -12,29 +13,41 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.codehaus.plexus.util.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
 
 public final class EcoSim extends JavaPlugin implements Listener {
-    public static final int TICKS_PER_SECOND = 2;
     public static final int SIMULATION_WIDTH = 256;
     public static final int[][] HEIGHT_MAP = new int[SIMULATION_WIDTH][SIMULATION_WIDTH];
 
     private static EcoSim instance;
+    public static int ticksPerSecond = 2;
 
     @Override
     public void onEnable() {
         instance = this;
-        getServer().getPluginManager().registerEvents(this, this);
+        this.getServer().getPluginManager().registerEvents(this, this);
 
         SimMobs.init();
 
         this.getCommand("geteggs").setExecutor(new GetEggsCommand());
         this.getCommand("tpcentre").setExecutor(new TpCentreCommand());
         this.getCommand("mobinfo").setExecutor(new MobInfoCommand());
+        this.getCommand("settps").setExecutor(new SetTpsCommand());
     }
 
     @Override
     public void onDisable() {
         SimMobs.stop();
+
+        this.getServer().unloadWorld("world", false);
+        try {
+            FileUtils.deleteDirectory(new File("world"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

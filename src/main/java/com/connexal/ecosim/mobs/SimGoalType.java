@@ -3,13 +3,15 @@ package com.connexal.ecosim.mobs;
 import com.connexal.ecosim.mobs.goals.FleeGoal;
 import com.connexal.ecosim.mobs.goals.MultiplyGoal;
 import com.connexal.ecosim.mobs.goals.SustainGoal;
+import com.connexal.ecosim.mobs.goals.WanderGoal;
 import com.connexal.ecosim.utils.MobSex;
 
 //The definition order is the priority order, top executes first
 public enum SimGoalType {
     FLEE(FleeGoal.class, true),
     SUSTAIN(SustainGoal.class),
-    MULTIPLY(MultiplyGoal.class, MobSex.MALE);
+    MULTIPLY(MultiplyGoal.class, MobSex.MALE),
+    WANDER(WanderGoal.class);
 
     private final Class<? extends SimGoal> goal;
     private final boolean isFlee;

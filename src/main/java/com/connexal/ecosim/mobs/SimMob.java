@@ -177,7 +177,7 @@ public class SimMob {
     }
 
     public void move(Location location, double speedMultiplier) {
-        double speed = (this.speed * speedMultiplier) * ((double) EcoSim.TICKS_PER_SECOND / 2);
+        double speed = (this.speed * speedMultiplier) * ((double) EcoSim.ticksPerSecond / 2);
         if (!this.isAdult()) {
             speed *= 0.5;
         }
